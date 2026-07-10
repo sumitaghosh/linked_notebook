@@ -18,7 +18,7 @@
     \includepdf[pages=#4,pagecommand={\createalltabs{#1}}]{#3}
 }
 
-% Meeting notes template (Sun start)
+% Meeting notes template (Mon start)
 \newcommand{\meetingnotes}[2]{
     % #1 = section number, #2 = page number
     \newpage
@@ -185,9 +185,9 @@
     \begin{tikzpicture}[remember picture, overlay]
         \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
         % Dot grid pattern
-        \foreach \x in {0,0.1,...,9.5} {
-            \foreach \y in {0,0.1,...,7.5} {
-                \fill[\sectioncolor] ([shift={(a)}]\x in, -\y in) circle (0.7pt);
+        \foreach \x in {0,5,...,240} {  % 9.5" = 241 mm
+            \foreach \y in {0,5,...,190} {  % 7.5" = 191 mm
+                \fill[\sectioncolor] ([shift={(a)}]\x mm, -\y mm) circle (1pt);
             }
         }
     \end{tikzpicture}
