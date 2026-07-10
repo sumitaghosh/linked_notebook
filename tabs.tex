@@ -1,0 +1,156 @@
+% TABS AND LINKS
+
+% Set up hyperlinks
+\hypersetup{
+    colorlinks=false,
+    linkbordercolor=white,
+    pdfborderstyle={/S/U/W 0},
+}
+
+% Command to create ALL tabs on the right side
+% #1 = current section number (1-8) to highlight
+\newcommand{\createalltabs}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+        % Section 1
+        \ifthenelse{\equal{#1}{1}}{
+            \node[anchor=east,fill=section1,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=3.4in]current page.east) 
+            {\hyperlink{section01}{\rotatebox{-90}{01}}};
+        }{
+            \node[anchor=east,fill=section1!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=3.4in]current page.east) 
+            {\hyperlink{section01}{\rotatebox{-90}{01}}};
+        }
+        
+        % Section 2
+        \ifthenelse{\equal{#1}{2}}{
+            \node[anchor=east,fill=section2,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=2.45in]current page.east) 
+            {\hyperlink{section02}{\rotatebox{-90}{02}}};
+        }{
+            \node[anchor=east,fill=section2!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=2.45in]current page.east) 
+            {\hyperlink{section02}{\rotatebox{-90}{02}}};
+        }
+        
+        % Section 3
+        \ifthenelse{\equal{#1}{3}}{
+            \node[anchor=east,fill=section3,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=1.5in]current page.east) 
+            {\hyperlink{section03}{\rotatebox{-90}{03}}};
+        }{
+            \node[anchor=east,fill=section3!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=1.5in]current page.east) 
+            {\hyperlink{section03}{\rotatebox{-90}{03}}};
+        }
+        
+        % Section 4
+        \ifthenelse{\equal{#1}{4}}{
+            \node[anchor=east,fill=section4,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=0.55in]current page.east) 
+            {\hyperlink{section04}{\rotatebox{-90}{04}}};
+        }{
+            \node[anchor=east,fill=section4!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=0.55in]current page.east) 
+            {\hyperlink{section04}{\rotatebox{-90}{04}}};
+        }
+        
+        % Section 5
+        \ifthenelse{\equal{#1}{5}}{
+            \node[anchor=east,fill=section5,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=-0.4in]current page.east) 
+            {\hyperlink{section05}{\rotatebox{-90}{05}}};
+        }{
+            \node[anchor=east,fill=section5!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=-0.4in]current page.east) 
+            {\hyperlink{section05}{\rotatebox{-90}{05}}};
+        }
+        
+        % Section 6
+        \ifthenelse{\equal{#1}{6}}{
+            \node[anchor=east,fill=section6,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=-1.35in]current page.east) 
+            {\hyperlink{section06}{\rotatebox{-90}{06}}};
+        }{
+            \node[anchor=east,fill=section6!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=-1.35in]current page.east) 
+            {\hyperlink{section06}{\rotatebox{-90}{06}}};
+        }
+        
+        % Section 7
+        \ifthenelse{\equal{#1}{7}}{
+            \node[anchor=east,fill=section7,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=-2.3in]current page.east) 
+            {\hyperlink{section07}{\rotatebox{-90}{07}}};
+        }{
+            \node[anchor=east,fill=section7!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=-2.3in]current page.east) 
+            {\hyperlink{section07}{\rotatebox{-90}{07}}};
+        }
+        
+        % Section 8
+        \ifthenelse{\equal{#1}{8}}{
+            \node[anchor=east,fill=section8,text=white,font=\bfseries\large,
+                  minimum height=0.85in,minimum width=0.45in,inner sep=3pt] 
+            at ([xshift=0in,yshift=-3.25in]current page.east) 
+            {\hyperlink{section08}{\rotatebox{-90}{08}}};
+        }{
+            \node[anchor=east,fill=section8!40,text=white,font=\bfseries,
+                  minimum height=0.75in,minimum width=0.4in,inner sep=2pt] 
+            at ([xshift=-0.05in,yshift=-3.25in]current page.east) 
+            {\hyperlink{section08}{\rotatebox{-90}{08}}};
+        }
+    \end{tikzpicture}
+}
+
+% Command for section divider page
+\newcommand{\sectiondivider}[2]{
+    % #1 = section number (01, 02, etc.), #2 = section color
+    \newpage
+    \thispagestyle{empty}
+    \createalltabs{#1}
+    
+    \begin{center}
+        % \vspace*{1.5in}
+        \hyperlink{tableofcontents}{\Huge\bfseries\color{#2} #1}
+        
+        \vspace{0.3in}
+        \rule{8in}{0.8pt}
+        
+        \vspace{0.5in}
+        \begin{tabular}{p{0.5in}p{3.5in}p{0.5in}p{3.5in}}
+            \hyperlink{s#1p1}{\large 01} & \rule{3in}{0.4pt} & \hyperlink{s#1p19}{\large 19} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p2}{\large 02} & \rule{3in}{0.4pt} & \hyperlink{s#1p20}{\large 20} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p3}{\large 03} & \rule{3in}{0.4pt} & \hyperlink{s#1p21}{\large 21} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p4}{\large 04} & \rule{3in}{0.4pt} & \hyperlink{s#1p22}{\large 22} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p5}{\large 05} & \rule{3in}{0.4pt} & \hyperlink{s#1p23}{\large 23} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p6}{\large 06} & \rule{3in}{0.4pt} & \hyperlink{s#1p24}{\large 24} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p7}{\large 07} & \rule{3in}{0.4pt} & \hyperlink{s#1p25}{\large 25} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p8}{\large 08} & \rule{3in}{0.4pt} & \hyperlink{s#1p26}{\large 26} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p9}{\large 09} & \rule{3in}{0.4pt} & \hyperlink{s#1p27}{\large 27} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p10}{\large 10} & \rule{3in}{0.4pt} & \hyperlink{s#1p28}{\large 28} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p11}{\large 11} & \rule{3in}{0.4pt} & \hyperlink{s#1p29}{\large 29} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p12}{\large 12} & \rule{3in}{0.4pt} & \hyperlink{s#1p30}{\large 30} & \rule{3in}{0.4pt} \\[0.15in]
+            \hyperlink{s#1p13}{\large 13} & \rule{3in}{0.4pt} & \hyperlink{s#1p31}{\large 31} & \hyperlink{s#1p31}{\large Blank Page Template} \\[0.15in]
+            \hyperlink{s#1p14}{\large 14} & \rule{3in}{0.4pt} & \hyperlink{s#1p32}{\large 32} & \hyperlink{s#1p32}{\large Ruled Page Template} \\[0.15in]
+            \hyperlink{s#1p15}{\large 15} & \rule{3in}{0.4pt} & \hyperlink{s#1p33}{\large 33} & \hyperlink{s#1p33}{\large Graph Page Template} \\[0.15in]
+            \hyperlink{s#1p16}{\large 16} & \rule{3in}{0.4pt} & \hyperlink{s#1p34}{\large 34} & \hyperlink{s#1p34}{\large Dot Grid Page Template} \\[0.15in]
+            \hyperlink{s#1p17}{\large 17} & \rule{3in}{0.4pt} & \hyperlink{s#1p35}{\large 35} & \hyperlink{s#1p35}{\large Cornell Page Template} \\[0.15in]
+            \hyperlink{s#1p18}{\large 18} & \rule{3in}{0.4pt} & \hyperlink{s#1p36}{\large 36} & \hyperlink{s#1p36}{\large Quadrile Page Template}
+        \end{tabular}
+    \end{center}
+}

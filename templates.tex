@@ -1,0 +1,269 @@
+% TEMPLATES
+
+% Blank page template
+\newcommand{\blankpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+}
+
+% PDF template page - includes external PDF with tabs overlay
+% Usage: \pdftemplate{section}{page}{path/to/file.pdf}{pdf_page_number}
+\newcommand{\pdftemplate}[4]{
+    % #1 = section number, #2 = page number, #3 = PDF file path, #4 = PDF page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \includepdf[pages=#4,pagecommand={\createalltabs{#1}}]{#3}
+}
+
+% Meeting notes template (Sun start)
+\newcommand{\meetingnotes}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    
+    \noindent{\LARGE\bfseries Meeting Notes}
+    \qquad
+    \noindent\begin{tabular}{ll}
+        \textbf{Date:} \rule{2in}{0.4pt} & \textbf{Time:} \rule{1.5in}{0.4pt} \quad M T W T F S S
+    \end{tabular}
+    
+    \vspace{0.1in}
+    \noindent\textbf{Objective:}\\
+    \rule{\dimexpr\textwidth\relax}{0.4pt}
+    
+    \vspace{0.1in}
+    \noindent\textbf{Attendees:}\\
+    \rule{\dimexpr\textwidth\relax}{0.4pt}
+    
+    \vspace{0.15in}
+    \noindent\textbf{Main Points:}\\[0.05in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}\\[0.1in]
+    \rule{\dimexpr\textwidth\relax}{0.4pt}
+    
+    \vspace{0.13in}
+    \noindent\begin{tabularx}{\dimexpr\textwidth\relax}{|X|c|c|c|}
+        \hline
+        \textbf{AGENDA ITEM} & \textbf{PRESENTER} & \textbf{PROJECT} & \textbf{\LARGE\checkmark} \\
+        \hline
+        & & & \\[0.25in]
+        \hline
+        & & & \\[0.25in]
+        \hline
+        & & & \\[0.25in]
+        \hline
+        & & & \\[0.25in]
+        \hline
+    \end{tabularx}
+    
+    \vspace{0.15in}
+    \noindent\begin{tabularx}{\dimexpr\textwidth\relax}{|X|c|c|c|}
+        \hline
+        \textbf{TASKS/ACTIONS} & \textbf{ASSIGNEE} & \textbf{DUE} & \textbf{\LARGE\checkmark} \\
+        \hline
+        & & & \\[0.25in]
+        \hline
+        & & & \\[0.25in]
+        \hline
+        & & & \\[0.25in]
+        \hline
+    \end{tabularx}
+}
+
+% Ruled paper - horizontal lines every 0.25in
+\newcommand{\ruledpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \tikzset{ruleline/.style={\sectioncolor!40, thin}}
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        \coordinate (b) at ([xshift=-1in, yshift=0.5in]current page.south east);
+        \foreach \y in {0,0.25,...,7.5} {
+            \draw[ruleline] ([xshift=0.5in, yshift=-0.5in-\y in]current page.north west) -- ([xshift=-1in, yshift=-0.5in-\y in]current page.north east);
+        }
+        \draw[\sectioncolor!50, thick] (a) rectangle (b);
+    \end{tikzpicture}
+}
+
+% Cornell Notes page
+\newcommand{\cornellpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        \coordinate (b) at ([xshift=-1in, yshift=0.5in]current page.south east);
+        
+        % Main border
+        \draw[\sectioncolor!50, thick] (a) rectangle (b);
+        
+        % Cue column (left, 2.5 inches wide)
+        \draw[\sectioncolor!50, thick] ([xshift=3in, yshift=-0.5in]current page.north west) -- ([xshift=3in, yshift=2.5in]current page.south west);
+        
+        % Summary section (bottom, 2 inches from bottom)
+        \draw[\sectioncolor!50, thick] ([xshift=0.5in, yshift=2.5in]current page.south west) -- ([xshift=-1in, yshift=2.5in]current page.south east);
+        
+        % Ruled lines in notes area (right side, above summary)
+        \foreach \y in {0.5,0.75,...,5.5} {
+            \draw[\sectioncolor!30, thin] ([xshift=3in, yshift=-0.5in-\y in]current page.north west) -- ([xshift=-1in, yshift=-0.5in-\y in]current page.north east);
+        }
+        
+        % Ruled lines in cue area (left side, above summary)
+        \foreach \y in {0.5,0.75,...,5.5} {
+            \draw[\sectioncolor!30, thin] ([xshift=0.5in, yshift=-0.5in-\y in]current page.north west) -- ([xshift=3in, yshift=-0.5in-\y in]current page.north west);
+        }
+        
+        % Ruled lines in summary area
+        \foreach \y in {6.0,6.25,...,7.5} {
+            \draw[\sectioncolor!30, thin] ([xshift=0.5in, yshift=-0.5in-\y in]current page.north west) -- ([xshift=-1in, yshift=-0.5in-\y in]current page.north east);
+        }
+        
+        % Labels
+        \node[anchor=north west, \sectioncolor!70] at ([xshift=0.6in, yshift=-0.6in]current page.north west) {\small\textit{Cues/Questions}};
+        \node[anchor=north west, \sectioncolor!70] at ([xshift=3.1in, yshift=-0.6in]current page.north west) {\small\textit{Notes}};
+        \node[anchor=north west, \sectioncolor!70] at ([xshift=0.6in, yshift=2.4in]current page.south west) {\small\textit{Summary}};
+    \end{tikzpicture}
+}
+
+% Quadrille paper - 10 squares per inch
+\newcommand{\quadrillepage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \tikzset{minorgrid/.style={\sectioncolor!30, thin}}
+        \tikzset{majorgrid/.style={\sectioncolor!50, thin}}
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        \coordinate (b) at ([xshift=-1in, yshift=0.5in]current page.south east);
+        \draw[style=minorgrid, shift={(a)}] (0,0) grid [step=5mm] (b);
+        \draw[style=majorgrid] (a) rectangle (b);
+    \end{tikzpicture}
+}
+
+% Graph paper - 8 squares per inch with major lines every 0.5in
+\newcommand{\graphpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \tikzset{minorgrid/.style={\sectioncolor!30, thin}}
+        \tikzset{majorgrid/.style={\sectioncolor!50, thin}}
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        \coordinate (b) at ([xshift=-1in, yshift=0.5in]current page.south east);
+        \draw[style=minorgrid, shift={(a)}] (0,0) grid [step=0.125in] (b);
+        \draw[style=majorgrid, shift={(a)}] (0,0) grid [step=0.5in] (b);
+        \draw[style=majorgrid] (a) rectangle (b);
+    \end{tikzpicture}
+}
+
+% Dot grid paper
+\newcommand{\dotgridpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        % Dot grid pattern
+        \foreach \x in {0,0.1,...,9.5} {
+            \foreach \y in {0,0.1,...,7.5} {
+                \fill[\sectioncolor] ([shift={(a)}]\x in, -\y in) circle (0.7pt);
+            }
+        }
+    \end{tikzpicture}
+}
+
+% Hexagonal dot grid page
+\newcommand{\hexdotgridpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        % Hex grid parameters
+        \def\hexSpacing{0.2} % side length in inches
+        \pgfmathsetmacro{\hexYStep}{\hexSpacing*0.866} % vertical step (sqrt(3)/2)
+        % Dot grid pattern
+        \foreach \y in {0,1,...,35} {
+            \foreach \x in {0,1,...,47} {
+                \pgfmathsetmacro{\xshift}{\x*\hexSpacing + (mod(\y,2)==1 ? 0.5*\hexSpacing : 0)}
+                \pgfmathsetmacro{\yshift}{-\y*\hexYStep}
+                \fill[\sectioncolor!40] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
+            }
+        }
+    \end{tikzpicture}
+}
+
+% Isometric dot grid page
+\newcommand{\isodotgridpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        % Isometric grid parameters
+        \def\isoSpacing{0.2} % side length in inches
+        \pgfmathsetmacro{\isoYStep}{\isoSpacing*0.866} % vertical step (sqrt(3)/2)
+        % Dot grid pattern
+        \foreach \y in {0,1,...,35} {
+            \foreach \x in {0,1,...,47} {
+                \pgfmathsetmacro{\xshift}{\x*\isoSpacing + (mod(\y,2)==1 ? 0.5*\isoSpacing : 0)}
+                \pgfmathsetmacro{\yshift}{-\y*\isoYStep}
+                \fill[\sectioncolor!40] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
+            }
+        }
+    \end{tikzpicture}
+}
+
+% Music staff paper (5 sets of 5-line staves)
+\newcommand{\staffpage}[2]{
+    % #1 = section number, #2 = page number
+    \newpage
+    \hypertarget{s#1p#2}{}
+    \createalltabs{#1}
+    \thispagestyle{empty}
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
+        \coordinate (b) at ([xshift=-1in, yshift=0.5in]current page.south east);
+        
+        % Draw 5 sets of staves, each staff has 5 lines
+        \foreach \staffnum in {0,1,2,3,4} {
+            \pgfmathsetmacro{\ybase}{1.25 + \staffnum * 1.4}
+            % Draw 5 lines for each staff
+            \foreach \line in {0,1,2,3,4} {
+                \pgfmathsetmacro{\ypos}{\ybase + \line * 0.125}
+                \draw[black, thin] ([xshift=0.5in, yshift=-\ypos in]current page.north west) -- ([xshift=-1in, yshift=-\ypos in]current page.north east);
+            }
+            % Draw bar line at start
+            \draw[black, thick] ([xshift=0.5in, yshift=-\ybase in]current page.north west) -- ([xshift=0.5in, yshift=-\ybase in-0.5in]current page.north west);
+        }
+        
+        % Border
+        \draw[\sectioncolor!50, thick] (a) rectangle (b);
+    \end{tikzpicture}
+}

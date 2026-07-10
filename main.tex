@@ -1,0 +1,231 @@
+% \documentclass{beamer}
+% \mode<presentation>
+% {
+%   \usetheme{Berkeley}
+%   \usecolortheme{wolverine}
+%   % or ...
+
+%   % \setbeamercovered{transparent}
+%   % or whatever (possibly just delete it)
+% }
+
+% giving up on beamer
+
+\documentclass[11pt,landscape]{article}
+\usepackage[paperwidth=11in,paperheight=8.5in,margin=0.5in,right=1in]{geometry}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage{pdfpages}
+% \usepackage{gridpapers}
+
+% Define colors for each section
+\definecolor{section1}{RGB}{255, 105, 180} % pink
+\definecolor{section2}{RGB}{255, 0, 0} % red
+\definecolor{section3}{RGB}{255, 142, 0} % orange
+\definecolor{section4}{RGB}{255,255,0} % yellow
+\definecolor{section5}{RGB}{0, 142, 0} % green
+\definecolor{section6}{RGB}{0, 192, 192} % turquoise
+\definecolor{section7}{RGB}{75, 0, 130} % indigo
+\definecolor{section8}{RGB}{142, 0, 142} % violet
+% Generic current section color (updated per section)
+\newcommand{\sectioncolor}{section1}
+
+\input{tabs}
+
+\input{templates}
+
+\pagestyle{empty}
+
+\begin{document}
+
+% % Title page
+% \thispagestyle{empty}
+% \begin{center}
+%     \vspace*{2.5in}
+%     {\Huge\bfseries NOTES}
+    
+%     \vspace{2in}
+%     {\LARGE\bfseries Sumita Ghosh}
+% \end{center}
+
+% Table of contents
+\newpage
+\hypertarget{tableofcontents}{}
+\thispagestyle{empty}
+\createalltabs{0}
+
+\begin{center}
+    \vspace*{1.5in}
+    {\LARGE\bfseries Notebook Sections}
+    
+    \vspace{0.6in}
+    \begin{tabular}{cl}
+        \colorbox{section1}{\textcolor{white}{\textbf{\hyperlink{section01}{\Large\;01\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section2}{\textcolor{white}{\textbf{\hyperlink{section02}{\Large\;02\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section3}{\textcolor{white}{\textbf{\hyperlink{section03}{\Large\;03\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section4}{\textcolor{white}{\textbf{\hyperlink{section04}{\Large\;04\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section5}{\textcolor{white}{\textbf{\hyperlink{section05}{\Large\;05\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section6}{\textcolor{white}{\hyperlink{section06}{\textbf{\Large\;06\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section7}{\textcolor{white}{\hyperlink{section07}{\textbf{\Large\;07\;}}}} & \rule{5in}{0.4pt} \\[0.25in]
+        \colorbox{section8}{\textcolor{white}{\hyperlink{section08}{\textbf{\Large\;08\;}}}} & \rule{5in}{0.4pt}
+    \end{tabular}
+\end{center}
+
+% % Blank dividers page
+% \newpage
+% \thispagestyle{empty}
+% \createalltabs{0}
+% \begin{center}
+%     \vspace*{3in}
+%     {\LARGE\bfseries Blank Dividers}
+% \end{center}
+
+% ============ SECTION 01 ============
+% \renewcommand{\sectioncolor}{section1}
+\hypertarget{section01}{}
+\sectiondivider{1}{section1}
+
+\hexdotgridpage{1}{1}
+\isodotgridpage{1}{2}
+
+% 1–30: meeting notes (decrease this if adding more pages)
+\foreach \i in {3,...,30} {
+    \meetingnotes{1}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{1}{31}
+\ruledpage{1}{32}
+\graphpage{1}{33}
+\dotgridpage{1}{34}
+\cornellpage{1}{35}
+\quadrillepage{1}{36}
+
+% ============ SECTION 02 ============
+\renewcommand{\sectioncolor}{section2}
+\hypertarget{section02}{}
+\sectiondivider{2}{section2}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{2}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{2}{31}
+\ruledpage{2}{32}
+\graphpage{2}{33}
+\dotgridpage{2}{34}
+\cornellpage{2}{35}
+\quadrillepage{2}{36}
+
+% ============ SECTION 03 ============
+\renewcommand{\sectioncolor}{section3}
+\hypertarget{section03}{}
+\sectiondivider{3}{section3}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{3}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{3}{31}
+\ruledpage{3}{32}
+\graphpage{3}{33}
+\dotgridpage{3}{34}
+\cornellpage{3}{35}
+\quadrillepage{3}{36}
+
+% ============ SECTION 04 ============
+\renewcommand{\sectioncolor}{section4}
+\hypertarget{section04}{}
+\sectiondivider{4}{section4}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{4}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{4}{31}
+\ruledpage{4}{32}
+\graphpage{4}{33}
+\dotgridpage{4}{34}
+\cornellpage{4}{35}
+\quadrillepage{4}{36}
+
+% ============ SECTION 05 ============
+\renewcommand{\sectioncolor}{section5}
+\hypertarget{section05}{}
+\sectiondivider{5}{section5}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{5}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{5}{31}
+\ruledpage{5}{32}
+\graphpage{5}{33}
+\dotgridpage{5}{34}
+\cornellpage{5}{35}
+\quadrillepage{5}{36}
+
+% ============ SECTION 06 ============
+\renewcommand{\sectioncolor}{section6}
+\hypertarget{section06}{}
+\sectiondivider{6}{section6}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{6}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{6}{31}
+\ruledpage{6}{32}
+\graphpage{6}{33}
+\dotgridpage{6}{34}
+\cornellpage{6}{35}
+\quadrillepage{6}{36}
+
+% ============ SECTION 07 ============
+\renewcommand{\sectioncolor}{section7}
+\hypertarget{section07}{}
+\sectiondivider{7}{section7}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{7}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{7}{31}
+\ruledpage{7}{32}
+\graphpage{7}{33}
+\dotgridpage{7}{34}
+\cornellpage{7}{35}
+\quadrillepage{7}{36}
+
+% ============ SECTION 08 ============
+\renewcommand{\sectioncolor}{section8}
+\hypertarget{section08}{}
+\sectiondivider{8}{section8}
+
+\foreach \i in {1,...,30} {
+    \meetingnotes{8}{\i}
+}
+
+% 31–36: template set (colored)
+\blankpage{8}{31}
+\ruledpage{8}{32}
+\graphpage{8}{33}
+\dotgridpage{8}{34}
+\cornellpage{8}{35}
+\quadrillepage{8}{36}
+
+\end{document}
