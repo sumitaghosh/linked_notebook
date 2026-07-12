@@ -194,7 +194,7 @@
     \end{tikzpicture}
 }
 
-% Hexagonal dot grid page
+% Hexagonal dot grid page (true honeycomb vertex lattice)
 \newcommand{\hexdotgridpage}[2]{
     % #1 = section number, #2 = page number
     \newpage
@@ -204,14 +204,15 @@
     \begin{tikzpicture}[remember picture, overlay]
         \coordinate (a) at ([xshift=0.5in, yshift=-0.5in]current page.north west);
         % Hex grid parameters
-        \def\hexSpacing{0.2} % side length in inches
-        \pgfmathsetmacro{\hexYStep}{\hexSpacing*0.866} % vertical step (sqrt(3)/2)
-        % Dot grid pattern
-        \foreach \y in {0,1,...,35} {
-            \foreach \x in {0,1,...,47} {
-                \pgfmathsetmacro{\xshift}{\x*\hexSpacing + (mod(\y,2)==1 ? 0.5*\hexSpacing : 0)}
-                \pgfmathsetmacro{\yshift}{-\y*\hexYStep}
-                \fill[\sectioncolor!40] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
+        \def\hexSpacing{0.2} % hexagon edge length in inches
+        \pgfmathsetmacro{\hexColStep}{\hexSpacing*1.732} % sqrt(3) * edge length = spacing within a row
+        \foreach \y in {0,1,...,50} {
+            \pgfmathsetmacro{\rowpair}{floor((\y+1)/2)}
+            \pgfmathsetmacro{\xoff}{mod(\rowpair,2)==1 ? 0.5*\hexColStep : 0}
+            \pgfmathsetmacro{\yshift}{-(1.5*floor(\y/2)*\hexSpacing + mod(\y,2)*0.5*\hexSpacing)}
+            \foreach \x in {0,1,...,27} {
+                \pgfmathsetmacro{\xshift}{\x*\hexColStep + \xoff}
+                \fill[\sectioncolor] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
             }
         }
     \end{tikzpicture}
@@ -230,11 +231,11 @@
         \def\isoSpacing{0.2} % side length in inches
         \pgfmathsetmacro{\isoYStep}{\isoSpacing*0.866} % vertical step (sqrt(3)/2)
         % Dot grid pattern
-        \foreach \y in {0,1,...,35} {
+        \foreach \y in {0,1,...,43} {
             \foreach \x in {0,1,...,47} {
                 \pgfmathsetmacro{\xshift}{\x*\isoSpacing + (mod(\y,2)==1 ? 0.5*\isoSpacing : 0)}
                 \pgfmathsetmacro{\yshift}{-\y*\isoYStep}
-                \fill[\sectioncolor!40] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
+                \fill[\sectioncolor] ([shift={(a)}]\xshift in, \yshift in) circle (0.7pt);
             }
         }
     \end{tikzpicture}
